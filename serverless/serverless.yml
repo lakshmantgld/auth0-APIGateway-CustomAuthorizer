@@ -8,8 +8,13 @@ provider:
   stage: dev
   region: ap-northeast-1
   environment:
-    AUTH0_CLIENT_ID: ${file(./config.yml):auth0ClientId}
-    AUTH0_CLIENT_SECRET: ${file(./config.yml):auth0ClientSecret}
+    AUTH0_DOMAIN: ${file(./config.yml):auth0Domain}
+    AUDIENCE: ${file(./config.yml):audience}
+    JWKS_URI: ${file(./config.yml):jwksUri}
+    TOKEN_ISSUER: ${file(./config.yml):tokenIssuer}
+
+plugins:
+  - serverless-webpack
 
 functions:
   customAuthorizer:
@@ -30,12 +35,4 @@ functions:
           method: get
           integration: lambda
           authorizer: customAuthorizer
-          cors:
-            origins:
-              - '*'
-            headers:
-              - Content-Type
-              - X-Amz-Date
-              - Authorization
-              - X-Api-Key
-              - X-Amz-Security-Token
+          cors: true

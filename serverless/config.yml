@@ -1,2 +1,6 @@
-auth0ClientId:
-auth0ClientSecret:
+auth0Domain: nj2jp.au.auth0.com
+audience: https://nj2jp-backend.com
+jwksUri: https://nj2jp.au.auth0.com/.well-known/jwks.json
+tokenIssuer: https://nj2jp.au.auth0.com/
+# audience should be Auth0 API's audience. These values are from Autho API dashboard
+# Look for "Quick start" section in Autho API dashboard. 
