@@ -1,18 +1,16 @@
 # Auth0-APIGateway-CustomAuthorizer
-============================
 
 [![auth0](https://img.shields.io/badge/auth0-v8.7.0-orange.svg)](http://redux.js.org/docs/introduction/)
 [![serverless](https://img.shields.io/badge/serverless-v1.17.0-yellow.svg)](http://www.serverless.com)
 [![react](https://img.shields.io/badge/react-v15.5.4-blue.svg)](https://github.com/facebook/react)
 
-This repository is all about securing APIGateway using Auth0 through **Custom Authorizer** approach. There are several ways to protect APIGateway namely **IAM Authorizer**, **Cognito Pools** and **Custom Authorizer**. But, This repo is exclusive for custom authorizer approach.
+This repository is all about securing APIGateway using Auth0 through **Custom Authorizer** approach. There are several ways to protect APIGateway namely **IAM Authorizer**, **Cognito Pools** and **Custom Authorizer**. But, this repo is exclusive for **Custom Authorizer** approach.
 
 ## Technical Architecture:
 This high level architecture would help us understand, how custom authorizer protects the APIGateway.
 ![Architecture diagram](https://raw.githubusercontent.com/lakshmantgld/auth0-APIGateway-CustomAuthorizer/master/readmeFiles/architecture.png)
 
 ## Overview:
-============================
 
 ### APIGateway:
 APIGateway is an AWS service that allows for definition, configuration and deployment of **REST API** interfaces. These interfaces can connect to a number of backend systems. One popular use case is to provide an interface to AWS Lambda functions to deliver a so-called **serverless architecture**.
@@ -31,7 +29,6 @@ Auth0 is authentication as a service. It helps us to set up a **SSO(Single Sign 
 This allows a Lambda function(AWS Lambda) to be invoked prior to an APIGateway execution, to perform authentication and authorization of the request. So, the custom authorizer function is invoked prior to the actual invocation of the backend.
 
 ## Gotchas:
-=============================
 
 1. Setting up Auth0's SSO(Single Sign On) is a straightforward approach, but setting up the auth0's API authentication service is little complicated. They have introduced a separate section called **APIs** in the dashboard. We need to create a **auth0 API client** and then integrate it with the **auth0 SSO client**.
 
