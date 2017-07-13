@@ -1,0 +1,6 @@
+auth0Domain:
+audience:
+jwksUri:
+tokenIssuer:
+# audience should be Auth0 API's audience. These values are from Autho API dashboard
+# Look for "Quick start" section in Autho API dashboard for jwksUri and tokenIssuer.
