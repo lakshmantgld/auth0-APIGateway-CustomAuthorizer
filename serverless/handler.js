@@ -61,19 +61,26 @@ module.exports.auth = (event, context, callback) => {
 
     client.getSigningKey(kid, (err, key) => {
       if (err) {
-        throw new Error(err);
+        console.log("getSigningKey error:", err);
+        callback(null, {policyDocument: getPolicyDocument('Deny', event.methodArn)});
       } else {
         let signingKey = key.publicKey || key.rsaPublicKey;
-        jwt.verify(token, signingKey, {audience: process.env.AUDIENCE, issuer: process.env.TOKEN_ISSUER}, (err, decoded) => {
+        let options = {
+          audience: process.env.AUDIENCE,
+          issuer: process.env.TOKEN_ISSUER
+        };
+
+        jwt.verify(token, signingKey, options, (err, decoded) => {
           if (err) {
-            throw new Error(err);
+            console.log("jwt.verify error:", err);
+            callback(null, {policyDocument: getPolicyDocument('Deny', event.methodArn)});
           } else {
             callback(null, {principalId: decoded.sub, policyDocument: getPolicyDocument('Allow', event.methodArn), context: {scope: decoded.scope}});
           }
         });
+
       }
     });
-
   } catch (err) {
     callback(null, {policyDocument: getPolicyDocument('Deny', event.methodArn)});
   }
