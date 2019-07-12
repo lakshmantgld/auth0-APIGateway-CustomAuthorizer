@@ -2,7 +2,7 @@ service: auth0-APIGateway-customAuthorizer
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs10.x
   cfLogs: true
   timeout: 20
   stage: dev
